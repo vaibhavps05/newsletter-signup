@@ -49,14 +49,19 @@ app.post("/", function(req, res){
 
     request(options , function(error, response, body){
         if(error){
-            console.log(error);
-        }else{
-            console.log(response.statusCode);
+            res.sendFile(__dirname + ("/failure.html"));
+        }if (response.statusCode != 200) {
+            res.sendFile(__dirname + ("/failure.html"));
+        } else {
+            res.sendFile(__dirname + ("/success.html"));
         }
     });
 
-})
+});
 
+app.post("/failure", function(req, res){
+    res.redirect("/");
+});
 
 app.listen(3000, function(){
     console.log("server is on port 3000");
