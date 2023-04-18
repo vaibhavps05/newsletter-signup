@@ -23,7 +23,11 @@ app.post("/", function(req, res){
         members: [
             {
                 email_address: email,
-                status: "subscribed"
+                status: "subscribed",
+                merge_fields: {
+                    FNAME: firstName,
+                    LNAME: secondName,
+                }
             }
         ]
     };
@@ -32,7 +36,7 @@ app.post("/", function(req, res){
 
 
     var options = {
-        url: "http://us21.api.mailchimp.com/3.0/lists/7e0dca60d6",
+        url: "https://us21.api.mailchimp.com/3.0/lists/7e0dca60d6",
         method:"post",
         headers: {
             "Authorization": "vaibhav 2335faed0949ce76bb9dcba9845e3a1a-us21"
